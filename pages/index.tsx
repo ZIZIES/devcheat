@@ -335,7 +335,7 @@ export default function Home() {
                   Cheat sheets for {languages.length} languages · {totalCards} cards · {currentLevelInfo.emoji} {currentLevelInfo.label} mode
                 </div>
                 <div className={styles.langGrid}>
-                  {[...commonLangs, ...(showObscure ? obscureLangs : [])].map(lang => (
+                  {languages.map(lang => (
                     <button key={lang.id} className={styles.langTile} onClick={() => setActiveLang(lang.id)}>
                       <span className={styles.tileIcon}>{LANG_ICONS[lang.id]}</span>
                       <span className={styles.tileName}>{lang.name}</span>
