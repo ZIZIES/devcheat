@@ -27,7 +27,7 @@ void main() {
 
     // string interpolation
     print('Hello, $name!');
-    print('Age: ${age + 1}');   // expressions use ${}
+    print('Age: \${age + 1}');   // expressions use \${}
 
     // null safety — types can't be null by default
     String? maybeNull = null;   // ? makes it nullable

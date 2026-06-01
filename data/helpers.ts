@@ -32,8 +32,8 @@ export function card(
   levels: {
     beginner:     LevelContent;
     intermediate: LevelContent;
-    advanced:     LevelContent;
+    advanced?:    LevelContent;
   }
 ): Card {
-  return { title, ...levels };
+  return { title, beginner: levels.beginner, intermediate: levels.intermediate, advanced: levels.advanced ?? levels.intermediate };
 }

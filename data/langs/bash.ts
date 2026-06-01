@@ -35,37 +35,37 @@ echo "5 + 3 = $result"     # 5 + 3 = 8`,
           note: "NEVER put spaces around = when assigning: name = 'Alice' is an ERROR. Bash thinks you're running a command called 'name'. x=1 is assignment, x = 1 is a syntax error",
         },
         intermediate: {
-          explanation: "Bash strings have two flavors: double quotes expand variables and commands, single quotes treat everything literally. Curly braces ${var} let you do string operations like slicing, replacement, and defaults.",
+          explanation: "Bash strings have two flavors: double quotes expand variables and commands, single quotes treat everything literally. Curly braces \${var} let you do string operations like slicing, replacement, and defaults.",
           code: `name="hello world"
 
 # length of string
-echo ${#name}              # 11
+echo \${#name}              # 11
 
-# substring: ${var:start:length}
-echo ${name:0:5}           # hello
-echo ${name:6}             # world (from index 6 to end)
+# substring: \${var:start:length}
+echo \${name:0:5}           # hello
+echo \${name:6}             # world (from index 6 to end)
 
-# replace: ${var/old/new}
-echo ${name/hello/hi}      # hi world
-echo ${name//l/L}          # heLLo worLd (replace ALL)
+# replace: \${var/old/new}
+echo \${name/hello/hi}      # hi world
+echo \${name//l/L}          # heLLo worLd (replace ALL)
 
-# default value if empty: ${var:-default}
+# default value if empty: \${var:-default}
 unset email
-echo ${email:-"no email"}  # no email
-echo ${email:="set now"}   # sets email AND echoes it
+echo \${email:-"no email"}  # no email
+echo \${email:="set now"}   # sets email AND echoes it
 
 # uppercase/lowercase (bash 4+)
-echo ${name^^}             # HELLO WORLD
-echo ${name,,}             # hello world (already lower)
+echo \${name^^}             # HELLO WORLD
+echo \${name,,}             # hello world (already lower)
 
 # arrays
 fruits=("apple" "banana" "cherry")
-echo ${fruits[0]}          # apple
-echo ${fruits[@]}          # all elements
-echo ${#fruits[@]}         # 3 (length)`,
+echo \${fruits[0]}          # apple
+echo \${fruits[@]}          # all elements
+echo \${#fruits[@]}         # 3 (length)`,
           examples: [
-            { input: `s="Hello, World!"\necho ${s:7:5}`, output: `World` },
-            { input: `s="hello"\necho ${s^^}`, output: `HELLO` },
+            { input: `s="Hello, World!"\necho \${s:7:5}`, output: `World` },
+            { input: `s="hello"\necho \${s^^}`, output: `HELLO` },
           ],
         },
         advanced: {
@@ -95,12 +95,12 @@ echo $myvar # world
 declare -A config
 config["host"]="localhost"
 config["port"]="5432"
-echo ${config["host"]}   # localhost
-for key in "${!config[@]}"; do
-    echo "$key = ${config[$key]}"
+echo \${config["host"]}   # localhost
+for key in "\${!config[@]}"; do
+    echo "$key = \${config[$key]}"
 done`,
           examples: [
-            { input: `declare -A m\nm["x"]=10\nm["y"]=20\necho ${m["x"]}`, output: `10` },
+            { input: `declare -A m\nm["x"]=10\nm["y"]=20\necho \${m["x"]}`, output: `10` },
           ],
           note: "process substitution <() creates a named pipe (a special file). the command runs and its output can be read like a file. this avoids temp files and is composable",
         },
@@ -211,7 +211,7 @@ fi
 # trap ensures lockfile is removed even if script crashes
 
 # parallel execution
-for url in "${urls[@]}"; do
+for url in "\${urls[@]}"; do
     curl -s "$url" &    # & runs in background
 done
 wait                    # wait for all background jobs

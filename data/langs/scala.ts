@@ -24,16 +24,16 @@ val c: Char   = 'A'
 
 // string interpolation
 val greeting = s"Hello, $name! You are $age years old."
-val calc = s"${age * 2} is double your age"
+val calc = s"\${age * 2} is double your age"
 
 // raw string (no escape sequences)
 val path = raw"C:\Users\$name\file.txt"
 
 // println
 println(greeting)
-println(s"Pi is approximately ${math.Pi:.2f}")`,
+println(s"Pi is approximately \${math.Pi:.2f}")`,
           examples: [
-            { input: `val x = 42\nprintln(s"x * 2 = ${x * 2}")`, output: `x * 2 = 84` },
+            { input: `val x = 42\nprintln(s"x * 2 = \${x * 2}")`, output: `x * 2 = 84` },
             { input: `"hello".toUpperCase`, output: `"HELLO"` },
           ],
           note: "in Scala, method calls without arguments don't need parentheses: string.length or string.length() both work. by convention, methods with side effects use () and pure methods don't",
@@ -80,7 +80,7 @@ val result = for {
     x <- List(1, 2, 3)
     y <- List(10, 20)
     if x + y > 15
-} yield s"$x + $y = ${x + y}"
+} yield s"$x + $y = \${x + y}"
 // List("1 + 20 = 21", "2 + 20 = 22", "3 + 10 = 13", "3 + 20 = 23")
 
 // type class pattern (Scala 3 with given/using)

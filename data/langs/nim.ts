@@ -91,7 +91,7 @@ repeat(3):
 # macro — transforms the AST at compile time
 macro debug(x: typed): untyped =
     result = quote do:
-        echo astToStr(`x`) & " = " & $`x`
+        echo astToStr(\`x\`) & " = " & $\`x\`
 
 let answer = 42
 debug(answer)   # prints: answer = 42
