@@ -1,4 +1,4 @@
-# cheatsh.dev
+# devcheat
 
 programming cheat sheets for every language. retro terminal aesthetic.
 
@@ -42,3 +42,4 @@ each language has sections, each section has cards with `title`, `code`, and opt
 /styles       → global css + css modules
 /public       → static assets
 ```
+*yes tommy claude wrote the readme*
