@@ -1,6 +1,6 @@
 # devcheat
 
-programming cheat sheets for every language. retro terminal aesthetic.
+programming cheat sheets for *almost* every language.
 
 ## stack
 - next.js 14 (pages router)
